@@ -125,7 +125,7 @@ const init = async () => {
         validator: CollaborationsValidator,
       },
     },
-]);
+  ]);
 
   await server.start();
   console.log(`Server berjalan pada ${server.info.uri}`);
