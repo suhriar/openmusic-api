@@ -1,4 +1,4 @@
-const autoBind = require("auto-bind");
+const autoBind = require('auto-bind');
 const ClientError = require('../../exceptions/ClientError');
  
 class AuthenticationsHandler {

@@ -6,7 +6,7 @@ const NotFoundError = require('../../exceptions/NotFoundError');
 
 class AlbumsService{
   constructor(){
-      this._pool = new Pool();
+    this._pool = new Pool();
   }
 
   async addAlbum({ name, year }) {
@@ -48,7 +48,7 @@ class AlbumsService{
     query = {
       text: 'SELECT * FROM songs WHERE album_id = $1',
       values: [id],
-    }
+    };
 
     const songsResult = await this._pool.query(query);
 

@@ -1,5 +1,5 @@
-const autoBind = require("auto-bind");
-const ClientError = require("../../exceptions/ClientError");
+const autoBind = require('auto-bind');
+const ClientError = require('../../exceptions/ClientError');
 
 class PlaylistsHandler {
   constructor(
@@ -26,8 +26,8 @@ class PlaylistsHandler {
       });
 
       const response = h.response({
-        status: "success",
-        message: "Playlist berhasil ditambahkan",
+        status: 'success',
+        message: 'Playlist berhasil ditambahkan',
         data: {
           playlistId,
         },
@@ -37,7 +37,7 @@ class PlaylistsHandler {
     } catch (error) {
       if (error instanceof ClientError) {
         const response = h.response({
-          status: "fail",
+          status: 'fail',
           message: error.message,
         });
         response.code(error.statusCode);
@@ -45,8 +45,8 @@ class PlaylistsHandler {
       }
 
       const response = h.response({
-        status: "error",
-        message: "Maaf, terjadi kegagalan pada server kami.",
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       response.code(500);
       console.error(error);
@@ -59,7 +59,7 @@ class PlaylistsHandler {
       const { id: credentialId } = request.auth.credentials;
       const playlists = await this._playlistsService.getPlaylists(credentialId);
       return {
-        status: "success",
+        status: 'success',
         data: {
           playlists,
         },
@@ -67,7 +67,7 @@ class PlaylistsHandler {
     } catch (error) {
       if (error instanceof ClientError) {
         const response = h.response({
-          status: "fail",
+          status: 'fail',
           message: error.message,
         });
         response.code(error.statusCode);
@@ -75,8 +75,8 @@ class PlaylistsHandler {
       }
 
       const response = h.response({
-        status: "error",
-        message: "Maaf, terjadi kegagalan pada server kami.",
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       response.code(500);
       console.error(error);
@@ -96,13 +96,13 @@ class PlaylistsHandler {
       await this._playlistsService.deletePlaylistById(playlistId);
 
       return {
-        status: "success",
-        message: "Playlist berhasil dihapus",
+        status: 'success',
+        message: 'Playlist berhasil dihapus',
       };
     } catch (error) {
       if (error instanceof ClientError) {
         const response = h.response({
-          status: "fail",
+          status: 'fail',
           message: error.message,
         });
         response.code(error.statusCode);
@@ -110,8 +110,8 @@ class PlaylistsHandler {
       }
 
       const response = h.response({
-        status: "error",
-        message: "Maaf, terjadi kegagalan pada server kami.",
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       response.code(500);
       console.error(error);
@@ -132,7 +132,7 @@ class PlaylistsHandler {
       await this._playlistsService.addSongToPlaylist(playlistId, songId);
 
       // add activity "add" to playlistActivity
-      const action = "add";
+      const action = 'add';
       await this._playlistsService.addActivityToPlaylist(
         playlistId,
         songId,
@@ -141,15 +141,15 @@ class PlaylistsHandler {
       );
 
       const response = h.response({
-        status: "success",
-        message: "Lagu berhasil ditambahkan ke playlist",
+        status: 'success',
+        message: 'Lagu berhasil ditambahkan ke playlist',
       });
       response.code(201);
       return response;
     } catch (error) {
       if (error instanceof ClientError) {
         const response = h.response({
-          status: "fail",
+          status: 'fail',
           message: error.message,
         });
         response.code(error.statusCode);
@@ -157,8 +157,8 @@ class PlaylistsHandler {
       }
 
       const response = h.response({
-        status: "error",
-        message: "Maaf, terjadi kegagalan pada server kami.",
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       response.code(500);
       console.error(error);
@@ -178,7 +178,7 @@ class PlaylistsHandler {
 
       const playlist = await this._playlistsService.getSongsByPlaylist(playlistId);
       return {
-        status: "success",
+        status: 'success',
         data: {
           playlist,
         },
@@ -186,7 +186,7 @@ class PlaylistsHandler {
     } catch (error) {
       if (error instanceof ClientError) {
         const response = h.response({
-          status: "fail",
+          status: 'fail',
           message: error.message,
         });
         response.code(error.statusCode);
@@ -194,8 +194,8 @@ class PlaylistsHandler {
       }
 
       const response = h.response({
-        status: "error",
-        message: "Maaf, terjadi kegagalan pada server kami.",
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       response.code(500);
       console.error(error);
@@ -216,7 +216,7 @@ class PlaylistsHandler {
       await this._playlistsService.deleteSongByPlaylist(playlistId, songId);
 
       // add activity "delete" to playlistActivity
-      const action = "delete";
+      const action = 'delete';
       await this._playlistsService.addActivityToPlaylist(
         playlistId,
         songId,
@@ -225,13 +225,13 @@ class PlaylistsHandler {
       );
 
       return {
-        status: "success",
-        message: "Lagu berhasil dihapus dari playlist",
+        status: 'success',
+        message: 'Lagu berhasil dihapus dari playlist',
       };
     } catch (error) {
       if (error instanceof ClientError) {
         const response = h.response({
-          status: "fail",
+          status: 'fail',
           message: error.message,
         });
         response.code(error.statusCode);
@@ -239,8 +239,8 @@ class PlaylistsHandler {
       }
 
       const response = h.response({
-        status: "error",
-        message: "Maaf, terjadi kegagalan pada server kami.",
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       response.code(500);
       console.error(error);
@@ -262,7 +262,7 @@ class PlaylistsHandler {
         playlistId
       );
       return {
-        status: "success",
+        status: 'success',
         data: {
           playlistId,
           activities,
@@ -271,7 +271,7 @@ class PlaylistsHandler {
     } catch (error) {
       if (error instanceof ClientError) {
         const response = h.response({
-          status: "fail",
+          status: 'fail',
           message: error.message,
         });
         response.code(error.statusCode);
@@ -279,8 +279,8 @@ class PlaylistsHandler {
       }
 
       const response = h.response({
-        status: "error",
-        message: "Maaf, terjadi kegagalan pada server kami.",
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       response.code(500);
       console.error(error);

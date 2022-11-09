@@ -1,4 +1,4 @@
-const autoBind = require("auto-bind");
+const autoBind = require('auto-bind');
 const ClientError = require('../../exceptions/ClientError');
  
 class AlbumsHandler {
@@ -17,7 +17,7 @@ class AlbumsHandler {
   async postAlbumHandler(request, h) {
     try {
       this._validator.validateAlbumPayload(request.payload);
-      const { name, year } = request.payload
+      const { name, year } = request.payload;
 
       const albumId = await this._service.addAlbum({ name, year });
 
@@ -45,7 +45,7 @@ class AlbumsHandler {
         message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       response.code(500);
-      console.log(error)
+      console.log(error);
       return response;
     }
   }
