@@ -24,6 +24,9 @@ exports.up = (pgm) => {
       notNull: true,
       default: pgm.func('current_timestamp'),
     },
+    cover_url: {
+      type: 'TEXT',
+    },
   });
 };
 
